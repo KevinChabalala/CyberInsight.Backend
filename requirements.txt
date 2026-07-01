@@ -1,0 +1,42 @@
+# ==========================================
+# CyberInsight Backend Dependencies
+# ==========================================
+
+# FastAPI Framework
+fastapi
+uvicorn[standard]
+
+# Database
+sqlalchemy
+alembic
+psycopg[binary]
+
+# Configuration
+pydantic
+pydantic-settings
+python-dotenv
+
+# Authentication
+python-jose[cryptography]
+passlib[bcrypt]
+
+# Security Analysis
+python-whois
+dnspython
+requests
+python-Wappalyzer
+
+# PDF Reports
+reportlab
+
+# Validation
+email-validator
+
+# Testing
+pytest
+httpx
+
+# Development
+black
+isort
+flake8
