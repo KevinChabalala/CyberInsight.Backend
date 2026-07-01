@@ -1,203 +1,183 @@
+# 🚀 CyberInsight Backend
+
+## AI-Powered Website Security Intelligence Platform
+
+---
+
+# 📑 Table of Contents
+
 1. Project Banner
-CyberInsight Backend
-
-AI-Powered Website Security Intelligence Platform
 2. Product Overview
-
-Explain:
-
-What CyberInsight is
-Why it exists
-Who it's for
-What problems it solves
 3. Key Features
-
-Authentication
-
-Website Analysis
-
-Risk Engine
-
-SSL Analysis
-
-WHOIS
-
-DNS
-
-Technology Detection
-
-HTTP Security Headers
-
-robots.txt
-
-security.txt
-
-PDF Reports
-
-Scan History
-
-REST API
-
-JWT Authentication
-
-4. Architecture
-
-Explain our layered architecture.
-
-API
-
-↓
-
-Controllers
-
-↓
-
-Services
-
-↓
-
-Analysis Engines
-
-↓
-
-Repositories
-
-↓
-
-PostgreSQL
+4. System Architecture
 5. Technology Stack
-
-Python
-
-FastAPI
-
-SQLAlchemy
-
-Alembic
-
-PostgreSQL
-
-JWT
-
-bcrypt
-
-ReportLab
-
-Pydantic
-
-python-whois
-
-dnspython
-
-requests
-
-socket
-
-python-Wappalyzer
-
 6. Project Structure
-
-A complete folder tree.
-
 7. Installation Guide
-
-Clone
-
-Virtual Environment
-
-Install Dependencies
-
-Environment Variables
-
-Run Database
-
-Run Alembic
-
-Run FastAPI
-
 8. Environment Variables
-
-Every variable explained.
-
 9. API Documentation
-
-Where Swagger is.
-
 10. Development Workflow
-
-Git Flow
-
-Branch naming
-
-Commit naming
-
-Pull Requests
-
-Code Reviews
-
 11. Security Principles
-
-Passive analysis only.
-
-No exploitation.
-
-No penetration testing.
-
-No malware.
-
-No offensive attacks.
-
 12. Roadmap
-
-Version 1
-
-Version 2
-
-Future Features
-
 13. Contributors
-
-You
-
-Your teammates
-
 14. License
 
-MIT (later)
+---
 
-Step 4
+# 1. Project Banner
 
-Professional badges at the top.
+## CyberInsight Backend
 
-Example:
+### AI-Powered Website Security Intelligence Platform
 
-Python
+---
 
-FastAPI
+# 2. Product Overview
 
-PostgreSQL
+### What is CyberInsight?
 
-React Native
+- Explain what CyberInsight is.
 
-License
+### Why was it created?
 
-Version
+- Explain the purpose of the platform.
 
-Build
-Step 5
+### Who is it for?
 
-Repository Structure
+- Developers
+- Organizations
+- Security Teams
+- IT Professionals
+- Students
 
-The repository should already contain folders like:
+### What problems does it solve?
 
+- Website Security Visibility
+- Passive Security Intelligence
+- Security Risk Assessment
+- Actionable Security Recommendations
+
+---
+
+# 3. Key Features
+
+## Authentication
+
+- User Registration
+- User Login
+- JWT Authentication
+- Secure Password Hashing
+- Protected Routes
+
+## Website Analysis
+
+- Website Scan
+- Domain Intelligence
+- SSL Certificate Analysis
+- DNS Analysis
+- HTTP Security Headers
+- Technology Detection
+- robots.txt Analysis
+- security.txt Analysis
+- Common Port Analysis
+
+## Risk Engine
+
+- Security Score Calculation
+- Risk Weighting
+- Severity Classification
+
+## Reporting
+
+- PDF Report Generation
+- Scan History
+- Security Recommendations
+
+## REST API
+
+- RESTful Architecture
+- Swagger Documentation
+- OpenAPI Specification
+
+---
+
+# 4. System Architecture
+
+## Layered Architecture
+
+```text
+API Layer
+    │
+    ▼
+Controllers
+    │
+    ▼
+Services
+    │
+    ▼
+Analysis Engines
+    │
+    ▼
+Repositories
+    │
+    ▼
+PostgreSQL Database
+```
+
+---
+
+# 5. Technology Stack
+
+## Backend
+
+- Python
+- FastAPI
+- SQLAlchemy
+- Alembic
+- PostgreSQL
+- Pydantic
+- JWT Authentication
+- bcrypt
+- ReportLab
+
+## Security Analysis
+
+- python-whois
+- dnspython
+- requests
+- socket
+- python-Wappalyzer
+
+---
+
+# 6. Project Structure
+
+```text
 CyberInsight.Backend/
 │
 ├── src/
+│   ├── api/
+│   ├── controllers/
+│   ├── services/
+│   ├── engines/
+│   ├── repositories/
+│   ├── models/
+│   ├── schemas/
+│   ├── middleware/
+│   ├── config/
+│   ├── core/
+│   ├── utils/
+│   └── main.py
+│
 ├── tests/
+│
 ├── docs/
+│
 ├── scripts/
+│
 ├── alembic/
+│
 ├── .github/
+│
 ├── requirements.txt
 ├── pyproject.toml
 ├── Dockerfile
@@ -205,3 +185,190 @@ CyberInsight.Backend/
 ├── .env.example
 ├── .gitignore
 └── README.md
+```
+
+---
+
+# 7. Installation Guide
+
+## Clone Repository
+
+## Create Virtual Environment
+
+## Install Dependencies
+
+## Configure Environment Variables
+
+## Database Configuration
+
+## Run Alembic Migrations
+
+## Start FastAPI Server
+
+---
+
+# 8. Environment Variables
+
+## Application
+
+- APP_NAME
+- APP_ENV
+- SECRET_KEY
+- JWT_ALGORITHM
+- ACCESS_TOKEN_EXPIRE_MINUTES
+
+## Database
+
+- DATABASE_URL
+- DB_HOST
+- DB_PORT
+- DB_NAME
+- DB_USERNAME
+- DB_PASSWORD
+
+## CORS
+
+- ALLOWED_ORIGINS
+
+---
+
+# 9. API Documentation
+
+## Swagger UI
+
+```
+/docs
+```
+
+## ReDoc
+
+```
+/redoc
+```
+
+---
+
+# 10. Development Workflow
+
+## Git Flow
+
+### Main Branch
+
+- Production-ready code
+
+### Develop Branch
+
+- Integration branch
+
+### Feature Branches
+
+```
+feature/authentication
+feature/dashboard
+feature/website-analysis
+feature/risk-engine
+feature/reports
+```
+
+## Commit Convention
+
+```
+feat:
+fix:
+refactor:
+docs:
+test:
+style:
+chore:
+```
+
+## Pull Requests
+
+- Code Review Required
+- Approval Required
+- Merge into Develop
+
+---
+
+# 11. Security Principles
+
+CyberInsight follows a **passive security intelligence** approach.
+
+The platform **DOES NOT**:
+
+- Exploit vulnerabilities
+- Perform penetration testing
+- Launch attacks
+- Execute malware
+- Perform SQL Injection
+- Perform XSS attacks
+- Execute brute-force attacks
+- Perform offensive security testing
+
+The platform only analyzes publicly available information and standard networking data.
+
+---
+
+# 12. Roadmap
+
+## Version 1 (MVP)
+
+- Authentication
+- Dashboard
+- Website Analysis
+- Risk Engine
+- PDF Reports
+- Scan History
+
+## Version 2
+
+- Continuous Monitoring
+- Scheduled Scans
+- Team Collaboration
+- Email Notifications
+- Multi-Organization Support
+
+## Future Features
+
+- AI Risk Insights
+- Security Trends
+- Mobile Notifications
+- Cloud Deployment
+- Advanced Analytics
+
+---
+
+# 13. Contributors
+
+## Project Lead
+
+- Kevin Chabalala
+
+## Development Team
+
+- Team Member 1
+- Team Member 2
+- Team Member 3
+- Team Member 4
+
+---
+
+# 14. License
+
+MIT License
+
+(To be added in a future release.)
+
+---
+
+# 🏷️ Repository Badges
+
+- Python
+- FastAPI
+- PostgreSQL
+- SQLAlchemy
+- JWT
+- Docker
+- Version
+- Build
+- License
