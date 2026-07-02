@@ -8,7 +8,7 @@ from cyberinsight.config.settings import settings
 from cyberinsight.core.base import Base
 
 # Import models here so Alembic can detect them
-from cyberinsight.models import User
+from cyberinsight.models import User, Scan
 
 # Example:
 # from cyberinsight.models.user import User
