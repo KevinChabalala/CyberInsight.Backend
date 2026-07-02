@@ -2,7 +2,7 @@ import socket
 import ssl
 from datetime import datetime, timezone
 from urllib.parse import urlparse
-
+from cyberinsight.engines.ssl.models import SslScanResult
 
 class SslEngine:
 
@@ -32,16 +32,16 @@ class SslEngine:
 
                     days_remaining = (expires - now).days
 
-                    return {
-                        "success": True,
-                        "issuer": issuer.get("organizationName"),
-                        "expires": expires.isoformat(),
-                        "days_remaining": days_remaining,
-                        "valid": days_remaining > 0,
-                    }
+                    return SslScanResult(
+    success=True,
+    issuer=issuer.get("organizationName"),
+    expires=expires.isoformat(),
+    days_remaining=days_remaining,
+    valid=days_remaining > 0,
+)
 
         except Exception as e:
-            return {
-                "success": False,
-                "error": str(e),
-            }
+            return SslScanResult(
+    success=False,
+    error=str(e),
+)

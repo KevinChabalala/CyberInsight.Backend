@@ -1,11 +1,10 @@
-from cyberinsight.engines.technology.detector import Detector
-from cyberinsight.engines.technology.fingerprint_loader import FingerprintLoader
+from .detector import Detector
+from .fingerprint_loader import FingerprintLoader
 
 
-class FingerprintEngine:
+class TechnologyEngine:
 
     def __init__(self):
-
         self.loader = FingerprintLoader()
 
     def analyze(self, url: str):

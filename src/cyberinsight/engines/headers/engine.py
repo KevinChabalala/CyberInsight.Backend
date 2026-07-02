@@ -1,5 +1,8 @@
 import requests
-
+from cyberinsight.engines.headers.models import (
+    HeaderScanResult,
+    SecurityHeader,
+)
 
 class HeaderEngine:
 
@@ -32,13 +35,17 @@ class HeaderEngine:
                     "value": headers.get(header),
                 }
 
-            return {
-                "success": True,
-                "headers": results,
-            }
+            return HeaderScanResult(
+    success=True,
+    headers={
+        key: SecurityHeader(**value)
+        for key, value in results.items()
+    },
+)
 
         except Exception as e:
-            return {
-                "success": False,
-                "error": str(e),
-            }
+            return HeaderScanResult(
+    success=False,
+    headers={},
+    error=str(e),
+)

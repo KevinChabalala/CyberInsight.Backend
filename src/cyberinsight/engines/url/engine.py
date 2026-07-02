@@ -1,5 +1,5 @@
 from urllib.parse import urlparse
-
+from cyberinsight.engines.url.models import UrlScanResult
 
 class UrlEngine:
 
@@ -10,13 +10,13 @@ class UrlEngine:
 
         is_valid = UrlEngine.validate(normalized_url)
 
-        return {
-            "success": is_valid,
-            "original_url": url,
-            "normalized_url": normalized_url,
-            "scheme": urlparse(normalized_url).scheme,
-            "domain": urlparse(normalized_url).netloc,
-        }
+        return UrlScanResult(
+               success=is_valid,
+               original_url=url,
+               normalized_url=normalized_url,
+               scheme=urlparse(normalized_url).scheme,
+               domain=urlparse(normalized_url).netloc,
+)
 
     @staticmethod
     def validate(url: str) -> bool:

@@ -1,5 +1,5 @@
 import socket
-
+from cyberinsight.engines.dns.models import DnsScanResult
 
 class DnsEngine:
 
@@ -15,16 +15,16 @@ class DnsEngine:
         try:
             ip = socket.gethostbyname(hostname)
 
-            return {
-                "success": True,
-                "hostname": hostname,
-                "ip_address": ip,
-            }
+            return DnsScanResult(
+                   success=True,
+                   hostname=hostname,
+                   ip_address=ip,
+)
 
         except socket.gaierror:
 
-            return {
-                "success": False,
-                "hostname": hostname,
-                "ip_address": None,
-            }
+            return DnsScanResult(
+    success=False,
+    hostname=hostname,
+    ip_address=None,
+)

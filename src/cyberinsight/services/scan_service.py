@@ -1,8 +1,8 @@
-from cyberinsight.engines.url_engine import UrlEngine
-from cyberinsight.engines.dns_engine import DnsEngine
-from cyberinsight.engines.ssl_engine import SslEngine
-from cyberinsight.engines.header_engine import HeaderEngine
-from cyberinsight.engines.technology_engine import TechnologyEngine
+from cyberinsight.engines.url import UrlEngine
+from cyberinsight.engines.dns import DnsEngine
+from cyberinsight.engines.ssl import SslEngine
+from cyberinsight.engines.headers import HeaderEngine
+from cyberinsight.engines.technology import TechnologyEngine
 from cyberinsight.engines.score_engine import ScoreEngine
 
 
@@ -22,7 +22,9 @@ class ScanService:
 
         header_result = HeaderEngine.analyze(url)
 
-        technology_result = TechnologyEngine.analyze(url)
+        technology_engine = TechnologyEngine()
+
+        technology_result = technology_engine.analyze(url)
 
         # -------------------------
         # Calculate Security Score

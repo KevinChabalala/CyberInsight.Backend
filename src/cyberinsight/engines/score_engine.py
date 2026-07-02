@@ -35,7 +35,7 @@ class ScoreEngine:
         # DNS
         # -------------------------
 
-        if dns_result["success"]:
+        if dns_result.success:
 
             points = self.rules["dns"]["resolved"]
 
@@ -49,9 +49,9 @@ class ScoreEngine:
         # SSL
         # -------------------------
 
-        if ssl_result["success"]:
+        if ssl_result.success:
 
-            if ssl_result["valid"]:
+            if ssl_result.valid:
 
                 points = self.rules["ssl"]["valid_certificate"]
 
@@ -74,10 +74,12 @@ class ScoreEngine:
         # -------------------------
         # Headers
         # -------------------------
+        # HeaderEngine still returns a dictionary,
+        # so we leave this section unchanged for now.
 
-        for header, info in header_result["headers"].items():
+        for header, info in header_result.headers.items():
 
-            if info["present"]:
+            if info.present:
 
                 points = self.rules["headers"].get(
                     header,
@@ -105,7 +107,7 @@ class ScoreEngine:
             )
 
         # -------------------------
-        # Limit score
+        # Limit Score
         # -------------------------
 
         score = max(0, min(score, 100))
