@@ -1,0 +1,23 @@
+{
+    "ssl": {
+        "valid_certificate": 20,
+        "expired_certificate": -20
+    },
+
+    "headers": {
+        "Strict-Transport-Security": 15,
+        "Content-Security-Policy": 20,
+        "X-Frame-Options": 10,
+        "X-Content-Type-Options": 10,
+        "Referrer-Policy": 10,
+        "Permissions-Policy": 10
+    },
+
+    "dns": {
+        "resolved": 5
+    },
+
+    "technology": {
+        "detected": 5
+    }
+}
