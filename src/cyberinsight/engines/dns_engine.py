@@ -4,12 +4,12 @@ import socket
 class DnsEngine:
 
     @staticmethod
-    def lookup(domain: str):
+    def analyze(url: str):
         """
         Resolve a domain name to an IP address.
         """
 
-        hostname = domain.replace("https://", "").replace("http://", "")
+        hostname = url.replace("https://", "").replace("http://", "")
         hostname = hostname.split("/")[0]
 
         try:
@@ -22,6 +22,7 @@ class DnsEngine:
             }
 
         except socket.gaierror:
+
             return {
                 "success": False,
                 "hostname": hostname,

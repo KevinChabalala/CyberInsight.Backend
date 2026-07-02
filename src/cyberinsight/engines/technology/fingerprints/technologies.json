@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Cloudflare",
+        "category": "CDN",
+
+        "headers": [
+            "cf-ray"
+        ],
+
+        "html": [],
+        "scripts": [],
+        "cookies": [],
+        "meta": [],
+        "regex": [],
+
+        "confidence": {
+            "headers": 100
+        }
+    },
+    {
+        "name": "React",
+
+        "category": "Frontend",
+
+        "headers": [],
+
+        "html": [
+            "react"
+        ],
+
+        "scripts": [
+            "react"
+        ],
+
+        "cookies": [],
+        "meta": [],
+        "regex": [],
+
+        "confidence": {
+            "html": 50,
+            "scripts": 50
+        }
+    }
+]

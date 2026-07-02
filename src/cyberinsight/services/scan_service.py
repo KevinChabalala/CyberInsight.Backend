@@ -1,19 +1,28 @@
-from cyberinsight.models.scan import Scan
-from cyberinsight.repositories.scan_repository import ScanRepository
-from cyberinsight.schemas.scan_schema import ScanCreate
+from cyberinsight.engines.url_engine import UrlEngine
+from cyberinsight.engines.dns_engine import DnsEngine
+from cyberinsight.engines.ssl_engine import SslEngine
+from cyberinsight.engines.header_engine import HeaderEngine
+from cyberinsight.engines.technology_engine import TechnologyEngine
 
 
 class ScanService:
 
-    def __init__(self, repository: ScanRepository):
-        self.repository = repository
+    def analyze(self, url: str):
 
-    def create_scan(self, request: ScanCreate, user_id):
-        scan = Scan(
-            user_id=user_id,
-            url=str(request.url),
-            status="PENDING",
-            security_score=0,
-        )
+        url_result = UrlEngine.analyze(url)
 
-        return self.repository.create(scan)
+        dns_result = DnsEngine.analyze(url)
+
+        ssl_result = SslEngine.analyze(url)
+
+        header_result = HeaderEngine.analyze(url)
+
+        technology_result = TechnologyEngine.analyze(url)
+
+        return {
+            "url": url_result,
+            "dns": dns_result,
+            "ssl": ssl_result,
+            "headers": header_result,
+            "technology": technology_result,
+        }
