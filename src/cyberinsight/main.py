@@ -3,8 +3,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from cyberinsight.api.router import api_router
-from cyberinsight.config.settings import settings
 
+from cyberinsight.config.settings import get_settings
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -12,6 +12,7 @@ async def lifespan(app: FastAPI):
     yield
     print(" CyberInsight Backend Stopped.")
 
+settings = get_settings()
 
 app = FastAPI(
     title=settings.APP_NAME,
