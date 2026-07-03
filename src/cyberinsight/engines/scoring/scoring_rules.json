@@ -1,23 +1,56 @@
-{
-    "ssl": {
-        "valid_certificate": 20,
-        "expired_certificate": -20
-    },
-
-    "headers": {
-        "Strict-Transport-Security": 15,
-        "Content-Security-Policy": 20,
-        "X-Frame-Options": 10,
-        "X-Content-Type-Options": 10,
-        "Referrer-Policy": 10,
-        "Permissions-Policy": 10
-    },
-
-    "dns": {
-        "resolved": 5
-    },
-
-    "technology": {
-        "detected": 5
-    }
+{  "tls": {
+    "tls13": 4,
+    "pfs": 3,
+    "trusted": 3
+},
+    "ports": {
+    "scan": 5,
+    "safe": 5
+},
+  "url": {
+    "https": 3,
+    "valid": 2
+  },
+  "dns": {
+    "resolved": 5
+  },
+  "dns_intelligence": {
+    "mx": 2,
+    "spf": 3,
+    "dmarc": 4,
+    "dkim": 3,
+    "name_servers": 3
+  },
+  "domain": {
+    "registered": 3,
+    "age": 3,
+    "not_expired": 4,
+    "dnssec": 3,
+    "registrar": 2
+  },
+  "ssl": {
+    "valid_certificate": 10,
+    "trusted_issuer": 5,
+    "expires_90_days": 5
+  },
+  "headers": {
+    "Strict-Transport-Security": 3,
+    "Content-Security-Policy": 3,
+    "X-Frame-Options": 2,
+    "X-Content-Type-Options": 2,
+    "Referrer-Policy": 2,
+    "Permissions-Policy": 3
+  },
+  "http": {
+    "https": 2,
+    "compression": 2,
+    "http2_or_http3": 2,
+    "no_redirect_loop": 2,
+    "fast_response": 2
+  },
+  "technology": {
+    "detected": 5,
+    "modern": 5,
+    "supported": 5
+  }
 }

@@ -1,22 +1,26 @@
 from urllib.parse import urlparse
+
 from cyberinsight.engines.url.models import UrlScanResult
+
 
 class UrlEngine:
 
     @staticmethod
-    def analyze(url: str):
+    def analyze(url: str) -> UrlScanResult:
 
         normalized_url = UrlEngine.normalize(url)
 
         is_valid = UrlEngine.validate(normalized_url)
 
+        parsed = urlparse(normalized_url)
+
         return UrlScanResult(
-               success=is_valid,
-               original_url=url,
-               normalized_url=normalized_url,
-               scheme=urlparse(normalized_url).scheme,
-               domain=urlparse(normalized_url).netloc,
-)
+            success=is_valid,
+            original_url=url,
+            normalized_url=normalized_url,
+            scheme=parsed.scheme,
+            domain=parsed.netloc,
+        )
 
     @staticmethod
     def validate(url: str) -> bool:
@@ -25,8 +29,8 @@ class UrlEngine:
 
         return all(
             [
-                parsed.scheme in ["http", "https"],
-                parsed.netloc,
+                parsed.scheme in ("http", "https"),
+                bool(parsed.netloc),
             ]
         )
 
