@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from cyberinsight.models.scan import Scan
-
+from sqlalchemy import func
 
 class ScanRepository:
 
@@ -13,6 +13,13 @@ class ScanRepository:
         self.db.commit()
         self.db.refresh(scan)
         return scan
+
+    def get_all(self):
+        return (
+            self.db.query(Scan)
+            .order_by(Scan.created_at.desc())
+            .all()
+        )
 
     def get_all_by_user(self, user_id):
         return (
@@ -27,3 +34,45 @@ class ScanRepository:
             .filter(Scan.id == scan_id)
             .first()
         )
+    
+
+    def count(self):
+        return self.db.query(Scan).count()
+
+
+    def average_score(self):
+        return (
+        self.db.query(func.avg(Scan.security_score))
+        .scalar()
+       )
+   
+
+    def highest_score(self):
+       return (
+        self.db.query(func.max(Scan.security_score))
+        .scalar()
+      )
+
+
+    def lowest_score(self):
+       return (
+        self.db.query(func.min(Scan.security_score))
+        .scalar()
+      )
+
+
+    def critical_scans(self):
+       return (
+        self.db.query(Scan)
+        .filter(Scan.risk == "Critical")
+        .count()
+      )
+
+
+    def recent(self, limit: int = 5):
+       return (
+        self.db.query(Scan)
+        .order_by(Scan.created_at.desc())
+        .limit(limit)
+        .all()
+    )

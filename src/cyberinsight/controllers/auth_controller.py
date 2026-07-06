@@ -47,17 +47,25 @@ def login(
     request: LoginRequest,
     db: Session = Depends(get_db),
 ):
+
     repository = UserRepository(db)
     service = AuthService(repository)
 
     try:
         token = service.login(request)
-        return {"access_token": token}
+
+        return {
+            "access_token": token,
+            "token_type": "bearer",
+        }
+
     except ValueError as e:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=str(e),
         )
+
+
 @router.get(
     "/me",
     response_model=UserResponse,
