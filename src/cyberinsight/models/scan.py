@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import DateTime, ForeignKey, Integer, String, func
+from sqlalchemy import DateTime, ForeignKey, Integer, String, func, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -19,7 +19,7 @@ class Scan(Base):
     user_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("users.id"),
-        nullable=False,
+        nullable=True,
     )
 
     url: Mapped[str] = mapped_column(
@@ -33,14 +33,29 @@ class Scan(Base):
     )
 
     security_score: Mapped[int] = mapped_column(
-        Integer,
-        default=0,
-    )
+    Integer,
+    default=0,
+   )
+
+    grade: Mapped[str] = mapped_column(
+    String(5),
+    default="N/A",
+   )
+
+    risk: Mapped[str] = mapped_column(
+    String(30),
+    default="Unknown",
+)
+
+    report: Mapped[dict] = mapped_column(
+    JSON,
+    nullable=True,
+)
 
     created_at: Mapped[DateTime] = mapped_column(
-        DateTime(timezone=True),
-        server_default=func.now(),
-    )
+    DateTime(timezone=True),
+    server_default=func.now(),
+   )
 
     updated_at: Mapped[DateTime] = mapped_column(
         DateTime(timezone=True),

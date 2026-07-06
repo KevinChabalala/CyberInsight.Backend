@@ -1,4 +1,4 @@
-from cyberinsight.engines.url_engine import UrlEngine
+from cyberinsight.engines.url.engine import UrlEngine
 
 url = "Google.com"
 

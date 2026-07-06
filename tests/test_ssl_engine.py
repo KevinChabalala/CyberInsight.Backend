@@ -1,4 +1,4 @@
-from cyberinsight.engines.ssl_engine import SslEngine
+from cyberinsight.engines.ssl.engine import SslEngine
 
 result = SslEngine.analyze("https://google.com")
 

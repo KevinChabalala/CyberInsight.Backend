@@ -1,4 +1,4 @@
-from cyberinsight.engines.technology_engine import TechnologyEngine
+from cyberinsight.engines.technology.engine import TechnologyEngine
 
 result = TechnologyEngine.analyze(
     "https://react.dev"

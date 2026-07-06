@@ -1,4 +1,4 @@
-from cyberinsight.engines.dns_engine import DnsEngine
+from cyberinsight.engines.dns.engine import DnsEngine
 
 result = DnsEngine.lookup("https://google.com")
 

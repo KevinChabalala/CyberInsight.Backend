@@ -13,7 +13,7 @@ def scan(
     request: ScanRequest,
     db: Session = Depends(get_db),
 ):
-    service = ScanService()
+    service = ScanService(db)
 
     return service.analyze(
         str(request.url)

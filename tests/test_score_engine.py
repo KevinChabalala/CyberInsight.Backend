@@ -1,4 +1,4 @@
-from cyberinsight.engines.score_engine import ScoreEngine
+from cyberinsight.engines.scoring.engine import ScoreEngine
 
 engine = ScoreEngine()
 

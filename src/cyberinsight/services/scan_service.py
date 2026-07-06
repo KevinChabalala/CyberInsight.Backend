@@ -14,8 +14,16 @@ from cyberinsight.engines.port_intelligence import (
 from cyberinsight.engines.tls_intelligence import (
     TLSIntelligenceEngine,
 )
+from fastapi.encoders import jsonable_encoder
+from sqlalchemy.orm import Session
+from cyberinsight.models.scan import Scan
+from cyberinsight.repositories.scan_repository import ScanRepository
 
 class ScanService:
+
+    def __init__(self, db: Session):
+
+        self.db = db
 
     def analyze(self, url: str):
 
@@ -67,8 +75,7 @@ class ScanService:
         # -------------------------
         # Return Complete Report
         # -------------------------
-
-        return ScanReport(
+        report = ScanReport(
             url=url_result,
             dns=dns_result,
             dns_intelligence=dns_intelligence_result,
@@ -81,3 +88,19 @@ class ScanService:
             security=security_result,
             tls_intelligence=tls_result,
         )
+
+        repository = ScanRepository(self.db)
+
+        scan = Scan(
+            user_id=None,
+            url=url,
+            status="COMPLETED",
+            security_score=report.security.score,
+            grade=report.security.grade,
+            risk=report.security.risk,
+            report=jsonable_encoder(report),
+        )
+
+        repository.create(scan)
+
+        return report
