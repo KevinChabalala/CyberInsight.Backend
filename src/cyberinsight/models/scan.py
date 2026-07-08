@@ -38,8 +38,8 @@ class Scan(Base):
    )
 
     grade: Mapped[str] = mapped_column(
-    String(5),
-    default="N/A",
+    String(20),
+    default="Unknown",
    )
 
     risk: Mapped[str] = mapped_column(

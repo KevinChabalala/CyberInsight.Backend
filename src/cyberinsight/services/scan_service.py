@@ -104,7 +104,7 @@ class ScanService:
             url=url,
             status="COMPLETED",
             security_score=report.security.score,
-            grade=report.security.grade,
+            grade=report.security.rating,
             risk=report.security.risk,
             report=jsonable_encoder(report),
         )
