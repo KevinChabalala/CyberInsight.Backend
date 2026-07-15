@@ -2,6 +2,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey
 from sqlalchemy.sql import func
 from cyberinsight.core.base import Base
+from sqlalchemy.dialects.postgresql import UUID
 
 class QRCode(Base):
     __tablename__ = "qr_codes"
@@ -10,9 +11,17 @@ class QRCode(Base):
     url = Column(String(500), nullable=False)
     domain = Column(String(255), nullable=False)
     data_url = Column(Text, nullable=True)  # Base64 encoded QR code image
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=True)
+    user_id = Column(
+    UUID(as_uuid=True),
+    ForeignKey("users.id"),
+    nullable=True
+)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    updated_at = Column(
+    DateTime(timezone=True),
+    server_default=func.now(),
+    onupdate=func.now()
+)
     
     def to_dict(self):
         return {
