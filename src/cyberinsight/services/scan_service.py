@@ -99,6 +99,8 @@ class ScanService:
 
         repository = ScanRepository(self.db)
 
+        print("URL BEFORE SAVE:", url)
+
         scan = Scan(
             user_id=current_user.id,
             url=url,
